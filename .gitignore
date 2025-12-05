@@ -1,0 +1,28 @@
+# Build
+bin/
+obj/
+**/bin/
+**/obj/
+
+# User-specific
+*.csproj.user
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# VS
+.vs/
+
+# SQLite DB
+app.db
+*.db
+
+# Reports
+*.pdf
+
+# Misc
+*.log
+*.cache
+*.tmp
+windowsdesktop-runtime-*.exe
