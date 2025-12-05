@@ -87,6 +87,19 @@ flowchart LR
     <tr><th>Ngoại lệ</th><td>Mã sinh viên trùng; dữ liệu không hợp lệ; đang tồn tại đăng ký liên quan</td></tr>
     <tr><th>Hậu điều kiện</th><td>Dữ liệu sinh viên được cập nhật nhất quán</td></tr>
   </table>
+  <pre class="mermaid">
+flowchart LR
+  CBGD["Cán bộ đào tạo"]:::actor -- thực hiện --> UC_View([Xem danh sách SV])
+  CBGD -- thực hiện --> UC_Add([Thêm SV])
+  CBGD -- thực hiện --> UC_Edit([Sửa SV])
+  CBGD -- thực hiện --> UC_Delete([Xóa SV])
+  QT["Quản trị"]:::actor -- thực hiện --> UC_View
+  QT -- thực hiện --> UC_Add
+  QT -- thực hiện --> UC_Edit
+  QT -- thực hiện --> UC_Delete
+
+  classDef actor fill:#fff,stroke:#333,stroke-width:1px;
+  </pre>
 
   <h3 id="2-2-2">2.2.2. Use case quản lý đăng ký học phần</h3>
   <table>
@@ -103,6 +116,19 @@ flowchart LR
     <tr><th>Ngoại lệ</th><td>Đăng ký trùng; môn không tồn tại; học kỳ không hợp lệ</td></tr>
     <tr><th>Hậu điều kiện</th><td>Bảng đăng ký được cập nhật; đảm bảo unique (StudentId, CourseId, SemesterId)</td></tr>
   </table>
+  <pre class="mermaid">
+flowchart LR
+  CBGD["Cán bộ đào tạo"]:::actor -- thực hiện --> UC_View([Xem đăng ký])
+  CBGD -- thực hiện --> UC_Add([Thêm đăng ký])
+  CBGD -- thực hiện --> UC_Edit([Sửa đăng ký])
+  CBGD -- thực hiện --> UC_Delete([Xóa đăng ký])
+  QT["Quản trị"]:::actor -- thực hiện --> UC_View
+  QT -- thực hiện --> UC_Add
+  QT -- thực hiện --> UC_Edit
+  QT -- thực hiện --> UC_Delete
+
+  classDef actor fill:#fff,stroke:#333,stroke-width:1px;
+  </pre>
 
   <h3 id="2-2-3">2.2.3. Use case quản lý điểm (kết quả học tập)</h3>
   <table>
@@ -119,6 +145,19 @@ flowchart LR
     <tr><th>Ngoại lệ</th><td>Điểm ngoài phạm vi; không có đăng ký</td></tr>
     <tr><th>Hậu điều kiện</th><td>Điểm được lưu; có thể dùng cho báo cáo</td></tr>
   </table>
+  <pre class="mermaid">
+flowchart LR
+  GV["Giảng viên"]:::actor -- thực hiện --> UC_View([Xem điểm])
+  GV -- thực hiện --> UC_Add([Nhập điểm])
+  GV -- thực hiện --> UC_Edit([Sửa điểm])
+  GV -- thực hiện --> UC_Delete([Xóa điểm])
+  QT["Quản trị"]:::actor -- thực hiện --> UC_View
+  QT -- thực hiện --> UC_Add
+  QT -- thực hiện --> UC_Edit
+  QT -- thực hiện --> UC_Delete
+
+  classDef actor fill:#fff,stroke:#333,stroke-width:1px;
+  </pre>
 
   <h3 id="2-2-4">2.2.4. Use case quản lý môn học</h3>
   <table>
@@ -134,6 +173,19 @@ flowchart LR
     <tr><th>Ngoại lệ</th><td>Mã môn trùng; ràng buộc với đăng ký/điểm</td></tr>
     <tr><th>Hậu điều kiện</th><td>Danh mục môn học được cập nhật nhất quán</td></tr>
   </table>
+  <pre class="mermaid">
+flowchart LR
+  CBGD["Cán bộ đào tạo"]:::actor -- thực hiện --> UC_View([Xem môn học])
+  CBGD -- thực hiện --> UC_Add([Thêm môn])
+  CBGD -- thực hiện --> UC_Edit([Sửa môn])
+  CBGD -- thực hiện --> UC_Delete([Xóa môn])
+  QT["Quản trị"]:::actor -- thực hiện --> UC_View
+  QT -- thực hiện --> UC_Add
+  QT -- thực hiện --> UC_Edit
+  QT -- thực hiện --> UC_Delete
+
+  classDef actor fill:#fff,stroke:#333,stroke-width:1px;
+  </pre>
 
   <h3 id="2-2-5">2.2.5. Use case quản lý học kỳ</h3>
   <table>
@@ -149,6 +201,19 @@ flowchart LR
     <tr><th>Ngoại lệ</th><td>Mã học kỳ trùng; đang được tham chiếu bởi đăng ký</td></tr>
     <tr><th>Hậu điều kiện</th><td>Danh mục học kỳ được cập nhật; mã học kỳ duy nhất</td></tr>
   </table>
+  <pre class="mermaid">
+flowchart LR
+  CBGD["Cán bộ đào tạo"]:::actor -- thực hiện --> UC_View([Xem học kỳ])
+  CBGD -- thực hiện --> UC_Add([Thêm học kỳ])
+  CBGD -- thực hiện --> UC_Edit([Sửa học kỳ])
+  CBGD -- thực hiện --> UC_Delete([Xóa học kỳ])
+  QT["Quản trị"]:::actor -- thực hiện --> UC_View
+  QT -- thực hiện --> UC_Add
+  QT -- thực hiện --> UC_Edit
+  QT -- thực hiện --> UC_Delete
+
+  classDef actor fill:#fff,stroke:#333,stroke-width:1px;
+  </pre>
 
   <p class="muted">Ghi chú: Sơ đồ và đặc tả được xây dựng khớp với cấu trúc mã nguồn hiện tại (WinForms + EF Core, bảng Students, Courses, Semesters, Enrollments).</p>
 </body>
