@@ -16,6 +16,80 @@ public static class ReportService
         QuestPDF.Settings.License = LicenseType.Community;
     }
 
+    public static string GenerateEnrollmentSummaryBySemester(string semesterCode)
+    {
+        using var db = DbFactory.CreateDbContext();
+        var sem = db.Semesters.FirstOrDefault(x => x.Code == semesterCode);
+        if (sem == null)
+            throw new InvalidOperationException($"Không tìm thấy học kỳ: {semesterCode}");
+
+        var byStudent = db.Enrollments
+            .Where(x => x.Semester.Code == semesterCode)
+            .Select(x => new
+            {
+                x.Student.StudentCode,
+                x.Student.FullName,
+                x.Student.ClassName,
+                x.Course.CourseCode,
+                CourseName = x.Course.Name
+            })
+            .AsEnumerable()
+            .GroupBy(x => new { x.StudentCode, x.FullName, x.ClassName })
+            .Select(g => new
+            {
+                g.Key.StudentCode,
+                g.Key.FullName,
+                g.Key.ClassName,
+                CourseCodes = string.Join(", ", g.Select(i => i.CourseCode).OrderBy(s => s)),
+                CourseNames = string.Join(", ", g.Select(i => i.CourseName).OrderBy(s => s))
+            })
+            .OrderBy(x => x.StudentCode)
+            .ToList();
+
+        var file = Path.Combine(AppContext.BaseDirectory, $"BaoCao_DangKy_{semesterCode}.pdf");
+
+        Document.Create(container =>
+        {
+            container.Page(page =>
+            {
+                page.Margin(30);
+                page.Header().Text($"Báo cáo đăng ký - Học kỳ: {sem.Name} ({sem.Code})").SemiBold().FontSize(18);
+                page.Content().Table(table =>
+                {
+                    table.ColumnsDefinition(cols =>
+                    {
+                        cols.RelativeColumn(2);
+                        cols.RelativeColumn(4);
+                        cols.RelativeColumn(2);
+                        cols.RelativeColumn(6);
+                    });
+                    table.Header(h =>
+                    {
+                        h.Cell().Text("Mã SV").SemiBold();
+                        h.Cell().Text("Họ tên").SemiBold();
+                        h.Cell().Text("Lớp").SemiBold();
+                        h.Cell().Text("Môn đăng ký (mã)").SemiBold();
+                    });
+                    foreach (var i in byStudent)
+                    {
+                        table.Cell().Text(i.StudentCode);
+                        table.Cell().Text(i.FullName);
+                        table.Cell().Text(i.ClassName ?? "");
+                        table.Cell().Text(i.CourseCodes);
+                    }
+                });
+                page.Footer().AlignRight().Text(x =>
+                {
+                    x.Span("Trang ");
+                    x.CurrentPageNumber();
+                    x.Span(" / ");
+                    x.TotalPages();
+                });
+            });
+        }).GeneratePdf(file);
+
+        return file;
+    }
     public static string GenerateStudyPlanBySemester(string semesterCode)
     {
         using var db = DbFactory.CreateDbContext();

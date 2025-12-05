@@ -81,6 +81,16 @@ public partial class Form1 : Form
                 try { System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo { FileName = file, UseShellExecute = true }); } catch { }
             }
         };
+        mnuBC_BaoCaoDangKy.Click += (_, __) =>
+        {
+            var sem = Interaction.InputBox("Nhập mã Học kỳ (vd: 2025-1)", "Báo cáo đăng ký", "");
+            if (!string.IsNullOrWhiteSpace(sem))
+            {
+                var file = ReportService.GenerateEnrollmentSummaryBySemester(sem.Trim());
+                MessageBox.Show($"Đã tạo: {file}");
+                try { System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo { FileName = file, UseShellExecute = true }); } catch { }
+            }
+        };
     }
 
     private void LoadStudents()

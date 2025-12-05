@@ -30,6 +30,7 @@ partial class Form1
     private System.Windows.Forms.ToolStripMenuItem mnuBaoCao;
     private System.Windows.Forms.ToolStripMenuItem mnuBC_KeHoachHocTap;
     private System.Windows.Forms.ToolStripMenuItem mnuBC_DSSVTheoMonHK;
+    private System.Windows.Forms.ToolStripMenuItem mnuBC_BaoCaoDangKy;
     private System.Windows.Forms.TabControl tabMain;
     private System.Windows.Forms.TabPage tabStudents;
     private System.Windows.Forms.TabPage tabCourses;
@@ -122,7 +123,7 @@ partial class Form1
         // 
         // mnuBaoCao
         // 
-        mnuBaoCao.DropDownItems.AddRange(new ToolStripItem[] { mnuBC_KeHoachHocTap, mnuBC_DSSVTheoMonHK });
+        mnuBaoCao.DropDownItems.AddRange(new ToolStripItem[] { mnuBC_KeHoachHocTap, mnuBC_DSSVTheoMonHK, mnuBC_BaoCaoDangKy });
         mnuBaoCao.Name = "mnuBaoCao";
         mnuBaoCao.Size = new Size(77, 24);
         mnuBaoCao.Text = "Báo cáo";
@@ -138,6 +139,12 @@ partial class Form1
         mnuBC_DSSVTheoMonHK.Name = "mnuBC_DSSVTheoMonHK";
         mnuBC_DSSVTheoMonHK.Size = new Size(336, 26);
         mnuBC_DSSVTheoMonHK.Text = "Danh sách SV theo Môn học (Học kỳ)";
+        // 
+        // mnuBC_BaoCaoDangKy
+        // 
+        mnuBC_BaoCaoDangKy.Name = "mnuBC_BaoCaoDangKy";
+        mnuBC_BaoCaoDangKy.Size = new Size(336, 26);
+        mnuBC_BaoCaoDangKy.Text = "Báo cáo đăng ký (theo Học kỳ)";
         // 
         // tabMain
         // 
