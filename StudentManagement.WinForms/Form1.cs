@@ -15,12 +15,18 @@ public partial class Form1 : Form
     {
         InitializeComponent();
 
+        // Ensure auto-generate columns so bound DTOs appear without manual column definitions
+        dgvStudents.AutoGenerateColumns = true;
+        dgvCourses.AutoGenerateColumns = true;
+        dgvSemesters.AutoGenerateColumns = true;
+        dgvEnrollments.AutoGenerateColumns = true;
+
         this.Load += (_, __) =>
         {
-            LoadStudents();
-            LoadCourses();
-            LoadSemesters();
-            LoadEnrollments();
+            try { LoadStudents(); } catch (Exception ex) { MessageBox.Show($"Lỗi tải Sinh viên: {ex.Message}"); }
+            try { LoadCourses(); } catch (Exception ex) { MessageBox.Show($"Lỗi tải Môn học: {ex.Message}"); }
+            try { LoadSemesters(); } catch (Exception ex) { MessageBox.Show($"Lỗi tải Học kỳ: {ex.Message}"); }
+            try { LoadEnrollments(); } catch (Exception ex) { MessageBox.Show($"Lỗi tải Đăng ký: {ex.Message}"); }
         };
 
         btnStuAdd.Click += (_, __) => AddStudent();

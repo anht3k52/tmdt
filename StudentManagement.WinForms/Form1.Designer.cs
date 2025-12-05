@@ -62,206 +62,391 @@ partial class Form1
 
     private void InitializeComponent()
     {
-        this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-        this.mnuBaoCao = new System.Windows.Forms.ToolStripMenuItem();
-        this.mnuBC_KeHoachHocTap = new System.Windows.Forms.ToolStripMenuItem();
-        this.mnuBC_DSSVTheoMonHK = new System.Windows.Forms.ToolStripMenuItem();
-        this.tabMain = new System.Windows.Forms.TabControl();
-        this.tabStudents = new System.Windows.Forms.TabPage();
-        this.tabCourses = new System.Windows.Forms.TabPage();
-        this.tabSemesters = new System.Windows.Forms.TabPage();
-        this.tabEnrollments = new System.Windows.Forms.TabPage();
-        this.dgvStudents = new System.Windows.Forms.DataGridView();
-        this.dgvCourses = new System.Windows.Forms.DataGridView();
-        this.dgvSemesters = new System.Windows.Forms.DataGridView();
-        this.dgvEnrollments = new System.Windows.Forms.DataGridView();
-        this.panelStu = new System.Windows.Forms.Panel();
-        this.panelCou = new System.Windows.Forms.Panel();
-        this.panelSem = new System.Windows.Forms.Panel();
-        this.panelEnr = new System.Windows.Forms.Panel();
-        this.btnStuAdd = new System.Windows.Forms.Button();
-        this.btnStuDelete = new System.Windows.Forms.Button();
-        this.btnStuSave = new System.Windows.Forms.Button();
-        this.btnStuEdit = new System.Windows.Forms.Button();
-        this.btnCouAdd = new System.Windows.Forms.Button();
-        this.btnCouEdit = new System.Windows.Forms.Button();
-        this.btnCouDelete = new System.Windows.Forms.Button();
-        this.btnCouSave = new System.Windows.Forms.Button();
-        this.btnSemAdd = new System.Windows.Forms.Button();
-        this.btnSemEdit = new System.Windows.Forms.Button();
-        this.btnSemDelete = new System.Windows.Forms.Button();
-        this.btnSemSave = new System.Windows.Forms.Button();
-        this.btnEnrAdd = new System.Windows.Forms.Button();
-        this.btnEnrEdit = new System.Windows.Forms.Button();
-        this.btnEnrDelete = new System.Windows.Forms.Button();
-        this.btnEnrSave = new System.Windows.Forms.Button();
-
+        menuStrip1 = new MenuStrip();
+        mnuBaoCao = new ToolStripMenuItem();
+        mnuBC_KeHoachHocTap = new ToolStripMenuItem();
+        mnuBC_DSSVTheoMonHK = new ToolStripMenuItem();
+        tabMain = new TabControl();
+        tabStudents = new TabPage();
+        dgvStudents = new DataGridView();
+        panelStu = new Panel();
+        btnStuAdd = new Button();
+        btnStuEdit = new Button();
+        btnStuDelete = new Button();
+        btnStuSave = new Button();
+        tabCourses = new TabPage();
+        dgvCourses = new DataGridView();
+        panelCou = new Panel();
+        btnCouAdd = new Button();
+        btnCouEdit = new Button();
+        btnCouDelete = new Button();
+        btnCouSave = new Button();
+        tabSemesters = new TabPage();
+        dgvSemesters = new DataGridView();
+        panelSem = new Panel();
+        btnSemAdd = new Button();
+        btnSemEdit = new Button();
+        btnSemDelete = new Button();
+        btnSemSave = new Button();
+        tabEnrollments = new TabPage();
+        dgvEnrollments = new DataGridView();
+        panelEnr = new Panel();
+        btnEnrAdd = new Button();
+        btnEnrEdit = new Button();
+        btnEnrDelete = new Button();
+        btnEnrSave = new Button();
+        menuStrip1.SuspendLayout();
+        tabMain.SuspendLayout();
+        tabStudents.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)dgvStudents).BeginInit();
+        panelStu.SuspendLayout();
+        tabCourses.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)dgvCourses).BeginInit();
+        panelCou.SuspendLayout();
+        tabSemesters.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)dgvSemesters).BeginInit();
+        panelSem.SuspendLayout();
+        tabEnrollments.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)dgvEnrollments).BeginInit();
+        panelEnr.SuspendLayout();
+        SuspendLayout();
+        // 
         // menuStrip1
-        this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.mnuBaoCao });
-        this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-        this.menuStrip1.Name = "menuStrip1";
-        this.menuStrip1.Size = new System.Drawing.Size(1000, 24);
-
+        // 
+        menuStrip1.ImageScalingSize = new Size(20, 20);
+        menuStrip1.Items.AddRange(new ToolStripItem[] { mnuBaoCao });
+        menuStrip1.Location = new Point(0, 0);
+        menuStrip1.Name = "menuStrip1";
+        menuStrip1.Size = new Size(1000, 28);
+        menuStrip1.TabIndex = 1;
+        // 
         // mnuBaoCao
-        this.mnuBaoCao.Text = "Báo cáo";
-        this.mnuBaoCao.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.mnuBC_KeHoachHocTap, this.mnuBC_DSSVTheoMonHK });
-
+        // 
+        mnuBaoCao.DropDownItems.AddRange(new ToolStripItem[] { mnuBC_KeHoachHocTap, mnuBC_DSSVTheoMonHK });
+        mnuBaoCao.Name = "mnuBaoCao";
+        mnuBaoCao.Size = new Size(77, 24);
+        mnuBaoCao.Text = "Báo cáo";
+        // 
         // mnuBC_KeHoachHocTap
-        this.mnuBC_KeHoachHocTap.Text = "Kế hoạch học tập (theo Học kỳ)";
-        
+        // 
+        mnuBC_KeHoachHocTap.Name = "mnuBC_KeHoachHocTap";
+        mnuBC_KeHoachHocTap.Size = new Size(336, 26);
+        mnuBC_KeHoachHocTap.Text = "Kế hoạch học tập (theo Học kỳ)";
+        // 
         // mnuBC_DSSVTheoMonHK
-        this.mnuBC_DSSVTheoMonHK.Text = "Danh sách SV theo Môn học (Học kỳ)";
-
-        this.SuspendLayout();
-
+        // 
+        mnuBC_DSSVTheoMonHK.Name = "mnuBC_DSSVTheoMonHK";
+        mnuBC_DSSVTheoMonHK.Size = new Size(336, 26);
+        mnuBC_DSSVTheoMonHK.Text = "Danh sách SV theo Môn học (Học kỳ)";
+        // 
         // tabMain
-        this.tabMain.Controls.Add(this.tabStudents);
-        this.tabMain.Controls.Add(this.tabCourses);
-        this.tabMain.Controls.Add(this.tabSemesters);
-        this.tabMain.Controls.Add(this.tabEnrollments);
-        this.tabMain.Dock = System.Windows.Forms.DockStyle.Fill;
-        this.tabMain.Location = new System.Drawing.Point(0, 24);
-        this.tabMain.Name = "tabMain";
-        this.tabMain.SelectedIndex = 0;
-        this.tabMain.Size = new System.Drawing.Size(1000, 600);
-
+        // 
+        tabMain.Controls.Add(tabStudents);
+        tabMain.Controls.Add(tabCourses);
+        tabMain.Controls.Add(tabSemesters);
+        tabMain.Controls.Add(tabEnrollments);
+        tabMain.Dock = DockStyle.Fill;
+        tabMain.Location = new Point(0, 28);
+        tabMain.Name = "tabMain";
+        tabMain.SelectedIndex = 0;
+        tabMain.Size = new Size(1000, 572);
+        tabMain.TabIndex = 0;
+        // 
         // tabStudents
-        this.tabStudents.Text = "Sinh viên";
-        this.tabStudents.Padding = new System.Windows.Forms.Padding(3);
-        this.tabStudents.Controls.Add(this.dgvStudents);
-        this.tabStudents.Controls.Add(this.panelStu);
-
+        // 
+        tabStudents.Controls.Add(dgvStudents);
+        tabStudents.Controls.Add(panelStu);
+        tabStudents.Location = new Point(4, 29);
+        tabStudents.Name = "tabStudents";
+        tabStudents.Padding = new Padding(3);
+        tabStudents.Size = new Size(992, 539);
+        tabStudents.TabIndex = 0;
+        tabStudents.Text = "Sinh viên";
+        // 
         // dgvStudents
-        this.dgvStudents.Dock = System.Windows.Forms.DockStyle.Fill;
-        this.dgvStudents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-        this.dgvStudents.RowHeadersVisible = false;
-
+        // 
+        dgvStudents.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        dgvStudents.ColumnHeadersHeight = 29;
+        dgvStudents.Dock = DockStyle.Fill;
+        dgvStudents.Location = new Point(3, 3);
+        dgvStudents.Name = "dgvStudents";
+        dgvStudents.RowHeadersVisible = false;
+        dgvStudents.RowHeadersWidth = 51;
+        dgvStudents.Size = new Size(986, 485);
+        dgvStudents.TabIndex = 0;
+        // 
         // panelStu
-        this.panelStu.Dock = System.Windows.Forms.DockStyle.Bottom;
-        this.panelStu.Height = 48;
-        this.panelStu.Controls.Add(this.btnStuAdd);
-        this.panelStu.Controls.Add(this.btnStuEdit);
-        this.panelStu.Controls.Add(this.btnStuDelete);
-        this.panelStu.Controls.Add(this.btnStuSave);
-
+        // 
+        panelStu.Controls.Add(btnStuAdd);
+        panelStu.Controls.Add(btnStuEdit);
+        panelStu.Controls.Add(btnStuDelete);
+        panelStu.Controls.Add(btnStuSave);
+        panelStu.Dock = DockStyle.Bottom;
+        panelStu.Location = new Point(3, 488);
+        panelStu.Name = "panelStu";
+        panelStu.Size = new Size(986, 48);
+        panelStu.TabIndex = 1;
+        // 
         // btnStuAdd
-        this.btnStuAdd.Text = "Thêm";
-        this.btnStuAdd.Left = 8; this.btnStuAdd.Top = 10; this.btnStuAdd.Width = 100;
+        // 
+        btnStuAdd.Location = new Point(8, 10);
+        btnStuAdd.Name = "btnStuAdd";
+        btnStuAdd.Size = new Size(100, 23);
+        btnStuAdd.TabIndex = 0;
+        btnStuAdd.Text = "Thêm";
+        // 
         // btnStuEdit
-        this.btnStuEdit.Text = "Sửa";
-        this.btnStuEdit.Left = 120; this.btnStuEdit.Top = 10; this.btnStuEdit.Width = 100;
+        // 
+        btnStuEdit.Location = new Point(120, 10);
+        btnStuEdit.Name = "btnStuEdit";
+        btnStuEdit.Size = new Size(100, 23);
+        btnStuEdit.TabIndex = 1;
+        btnStuEdit.Text = "Sửa";
+        // 
         // btnStuDelete
-        this.btnStuDelete.Text = "Xóa";
-        this.btnStuDelete.Left = 232; this.btnStuDelete.Top = 10; this.btnStuDelete.Width = 100;
+        // 
+        btnStuDelete.Location = new Point(232, 10);
+        btnStuDelete.Name = "btnStuDelete";
+        btnStuDelete.Size = new Size(100, 23);
+        btnStuDelete.TabIndex = 2;
+        btnStuDelete.Text = "Xóa";
+        // 
         // btnStuSave
-        this.btnStuSave.Text = "Lưu";
-        this.btnStuSave.Left = 344; this.btnStuSave.Top = 10; this.btnStuSave.Width = 100;
-
+        // 
+        btnStuSave.Location = new Point(344, 10);
+        btnStuSave.Name = "btnStuSave";
+        btnStuSave.Size = new Size(100, 23);
+        btnStuSave.TabIndex = 3;
+        btnStuSave.Text = "Lưu";
+        // 
         // tabCourses
-        this.tabCourses.Text = "Môn học";
-        this.tabCourses.Padding = new System.Windows.Forms.Padding(3);
-        this.tabCourses.Controls.Add(this.dgvCourses);
-        this.tabCourses.Controls.Add(this.panelCou);
-
+        // 
+        tabCourses.Controls.Add(dgvCourses);
+        tabCourses.Controls.Add(panelCou);
+        tabCourses.Location = new Point(4, 29);
+        tabCourses.Name = "tabCourses";
+        tabCourses.Padding = new Padding(3);
+        tabCourses.Size = new Size(992, 567);
+        tabCourses.TabIndex = 1;
+        tabCourses.Text = "Môn học";
+        // 
         // dgvCourses
-        this.dgvCourses.Dock = System.Windows.Forms.DockStyle.Fill;
-        this.dgvCourses.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-        this.dgvCourses.RowHeadersVisible = false;
-
+        // 
+        dgvCourses.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        dgvCourses.ColumnHeadersHeight = 29;
+        dgvCourses.Dock = DockStyle.Fill;
+        dgvCourses.Location = new Point(3, 3);
+        dgvCourses.Name = "dgvCourses";
+        dgvCourses.RowHeadersVisible = false;
+        dgvCourses.RowHeadersWidth = 51;
+        dgvCourses.Size = new Size(986, 513);
+        dgvCourses.TabIndex = 0;
+        // 
         // panelCou
-        this.panelCou.Dock = System.Windows.Forms.DockStyle.Bottom;
-        this.panelCou.Height = 48;
-        this.panelCou.Controls.Add(this.btnCouAdd);
-        this.panelCou.Controls.Add(this.btnCouEdit);
-        this.panelCou.Controls.Add(this.btnCouDelete);
-        this.panelCou.Controls.Add(this.btnCouSave);
-
+        // 
+        panelCou.Controls.Add(btnCouAdd);
+        panelCou.Controls.Add(btnCouEdit);
+        panelCou.Controls.Add(btnCouDelete);
+        panelCou.Controls.Add(btnCouSave);
+        panelCou.Dock = DockStyle.Bottom;
+        panelCou.Location = new Point(3, 516);
+        panelCou.Name = "panelCou";
+        panelCou.Size = new Size(986, 48);
+        panelCou.TabIndex = 1;
+        // 
         // btnCouAdd
-        this.btnCouAdd.Text = "Thêm";
-        this.btnCouAdd.Left = 8; this.btnCouAdd.Top = 10; this.btnCouAdd.Width = 100;
+        // 
+        btnCouAdd.Location = new Point(8, 10);
+        btnCouAdd.Name = "btnCouAdd";
+        btnCouAdd.Size = new Size(100, 23);
+        btnCouAdd.TabIndex = 0;
+        btnCouAdd.Text = "Thêm";
+        // 
         // btnCouEdit
-        this.btnCouEdit.Text = "Sửa";
-        this.btnCouEdit.Left = 120; this.btnCouEdit.Top = 10; this.btnCouEdit.Width = 100;
+        // 
+        btnCouEdit.Location = new Point(120, 10);
+        btnCouEdit.Name = "btnCouEdit";
+        btnCouEdit.Size = new Size(100, 23);
+        btnCouEdit.TabIndex = 1;
+        btnCouEdit.Text = "Sửa";
+        // 
         // btnCouDelete
-        this.btnCouDelete.Text = "Xóa";
-        this.btnCouDelete.Left = 232; this.btnCouDelete.Top = 10; this.btnCouDelete.Width = 100;
+        // 
+        btnCouDelete.Location = new Point(232, 10);
+        btnCouDelete.Name = "btnCouDelete";
+        btnCouDelete.Size = new Size(100, 23);
+        btnCouDelete.TabIndex = 2;
+        btnCouDelete.Text = "Xóa";
+        // 
         // btnCouSave
-        this.btnCouSave.Text = "Lưu";
-        this.btnCouSave.Left = 344; this.btnCouSave.Top = 10; this.btnCouSave.Width = 100;
-
+        // 
+        btnCouSave.Location = new Point(344, 10);
+        btnCouSave.Name = "btnCouSave";
+        btnCouSave.Size = new Size(100, 23);
+        btnCouSave.TabIndex = 3;
+        btnCouSave.Text = "Lưu";
+        // 
         // tabSemesters
-        this.tabSemesters.Text = "Học kỳ";
-        this.tabSemesters.Padding = new System.Windows.Forms.Padding(3);
-        this.tabSemesters.Controls.Add(this.dgvSemesters);
-        this.tabSemesters.Controls.Add(this.panelSem);
-
+        // 
+        tabSemesters.Controls.Add(dgvSemesters);
+        tabSemesters.Controls.Add(panelSem);
+        tabSemesters.Location = new Point(4, 29);
+        tabSemesters.Name = "tabSemesters";
+        tabSemesters.Padding = new Padding(3);
+        tabSemesters.Size = new Size(992, 567);
+        tabSemesters.TabIndex = 2;
+        tabSemesters.Text = "Học kỳ";
+        // 
         // dgvSemesters
-        this.dgvSemesters.Dock = System.Windows.Forms.DockStyle.Fill;
-        this.dgvSemesters.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-        this.dgvSemesters.RowHeadersVisible = false;
-
+        // 
+        dgvSemesters.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        dgvSemesters.ColumnHeadersHeight = 29;
+        dgvSemesters.Dock = DockStyle.Fill;
+        dgvSemesters.Location = new Point(3, 3);
+        dgvSemesters.Name = "dgvSemesters";
+        dgvSemesters.RowHeadersVisible = false;
+        dgvSemesters.RowHeadersWidth = 51;
+        dgvSemesters.Size = new Size(986, 513);
+        dgvSemesters.TabIndex = 0;
+        // 
         // panelSem
-        this.panelSem.Dock = System.Windows.Forms.DockStyle.Bottom;
-        this.panelSem.Height = 48;
-        this.panelSem.Controls.Add(this.btnSemAdd);
-        this.panelSem.Controls.Add(this.btnSemEdit);
-        this.panelSem.Controls.Add(this.btnSemDelete);
-        this.panelSem.Controls.Add(this.btnSemSave);
-
+        // 
+        panelSem.Controls.Add(btnSemAdd);
+        panelSem.Controls.Add(btnSemEdit);
+        panelSem.Controls.Add(btnSemDelete);
+        panelSem.Controls.Add(btnSemSave);
+        panelSem.Dock = DockStyle.Bottom;
+        panelSem.Location = new Point(3, 516);
+        panelSem.Name = "panelSem";
+        panelSem.Size = new Size(986, 48);
+        panelSem.TabIndex = 1;
+        // 
         // btnSemAdd
-        this.btnSemAdd.Text = "Thêm";
-        this.btnSemAdd.Left = 8; this.btnSemAdd.Top = 10; this.btnSemAdd.Width = 100;
+        // 
+        btnSemAdd.Location = new Point(8, 10);
+        btnSemAdd.Name = "btnSemAdd";
+        btnSemAdd.Size = new Size(100, 23);
+        btnSemAdd.TabIndex = 0;
+        btnSemAdd.Text = "Thêm";
+        // 
         // btnSemEdit
-        this.btnSemEdit.Text = "Sửa";
-        this.btnSemEdit.Left = 120; this.btnSemEdit.Top = 10; this.btnSemEdit.Width = 100;
+        // 
+        btnSemEdit.Location = new Point(120, 10);
+        btnSemEdit.Name = "btnSemEdit";
+        btnSemEdit.Size = new Size(100, 23);
+        btnSemEdit.TabIndex = 1;
+        btnSemEdit.Text = "Sửa";
+        // 
         // btnSemDelete
-        this.btnSemDelete.Text = "Xóa";
-        this.btnSemDelete.Left = 232; this.btnSemDelete.Top = 10; this.btnSemDelete.Width = 100;
+        // 
+        btnSemDelete.Location = new Point(232, 10);
+        btnSemDelete.Name = "btnSemDelete";
+        btnSemDelete.Size = new Size(100, 23);
+        btnSemDelete.TabIndex = 2;
+        btnSemDelete.Text = "Xóa";
+        // 
         // btnSemSave
-        this.btnSemSave.Text = "Lưu";
-        this.btnSemSave.Left = 344; this.btnSemSave.Top = 10; this.btnSemSave.Width = 100;
-
+        // 
+        btnSemSave.Location = new Point(344, 10);
+        btnSemSave.Name = "btnSemSave";
+        btnSemSave.Size = new Size(100, 23);
+        btnSemSave.TabIndex = 3;
+        btnSemSave.Text = "Lưu";
+        // 
         // tabEnrollments
-        this.tabEnrollments.Text = "Đăng ký";
-        this.tabEnrollments.Padding = new System.Windows.Forms.Padding(3);
-        this.tabEnrollments.Controls.Add(this.dgvEnrollments);
-        this.tabEnrollments.Controls.Add(this.panelEnr);
-
+        // 
+        tabEnrollments.Controls.Add(dgvEnrollments);
+        tabEnrollments.Controls.Add(panelEnr);
+        tabEnrollments.Location = new Point(4, 29);
+        tabEnrollments.Name = "tabEnrollments";
+        tabEnrollments.Padding = new Padding(3);
+        tabEnrollments.Size = new Size(992, 539);
+        tabEnrollments.TabIndex = 3;
+        tabEnrollments.Text = "Đăng ký";
+        // 
         // dgvEnrollments
-        this.dgvEnrollments.Dock = System.Windows.Forms.DockStyle.Fill;
-        this.dgvEnrollments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-        this.dgvEnrollments.RowHeadersVisible = false;
-
+        // 
+        dgvEnrollments.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        dgvEnrollments.ColumnHeadersHeight = 29;
+        dgvEnrollments.Dock = DockStyle.Fill;
+        dgvEnrollments.Location = new Point(3, 3);
+        dgvEnrollments.Name = "dgvEnrollments";
+        dgvEnrollments.RowHeadersVisible = false;
+        dgvEnrollments.RowHeadersWidth = 51;
+        dgvEnrollments.Size = new Size(986, 485);
+        dgvEnrollments.TabIndex = 0;
+        // 
         // panelEnr
-        this.panelEnr.Dock = System.Windows.Forms.DockStyle.Bottom;
-        this.panelEnr.Height = 48;
-        this.panelEnr.Controls.Add(this.btnEnrAdd);
-        this.panelEnr.Controls.Add(this.btnEnrEdit);
-        this.panelEnr.Controls.Add(this.btnEnrDelete);
-        this.panelEnr.Controls.Add(this.btnEnrSave);
-
+        // 
+        panelEnr.Controls.Add(btnEnrAdd);
+        panelEnr.Controls.Add(btnEnrEdit);
+        panelEnr.Controls.Add(btnEnrDelete);
+        panelEnr.Controls.Add(btnEnrSave);
+        panelEnr.Dock = DockStyle.Bottom;
+        panelEnr.Location = new Point(3, 488);
+        panelEnr.Name = "panelEnr";
+        panelEnr.Size = new Size(986, 48);
+        panelEnr.TabIndex = 1;
+        // 
         // btnEnrAdd
-        this.btnEnrAdd.Text = "Thêm";
-        this.btnEnrAdd.Left = 8; this.btnEnrAdd.Top = 10; this.btnEnrAdd.Width = 100;
+        // 
+        btnEnrAdd.Location = new Point(8, 10);
+        btnEnrAdd.Name = "btnEnrAdd";
+        btnEnrAdd.Size = new Size(100, 23);
+        btnEnrAdd.TabIndex = 0;
+        btnEnrAdd.Text = "Thêm";
+        // 
         // btnEnrEdit
-        this.btnEnrEdit.Text = "Sửa";
-        this.btnEnrEdit.Left = 120; this.btnEnrEdit.Top = 10; this.btnEnrEdit.Width = 100;
+        // 
+        btnEnrEdit.Location = new Point(120, 10);
+        btnEnrEdit.Name = "btnEnrEdit";
+        btnEnrEdit.Size = new Size(100, 23);
+        btnEnrEdit.TabIndex = 1;
+        btnEnrEdit.Text = "Sửa";
+        // 
         // btnEnrDelete
-        this.btnEnrDelete.Text = "Xóa";
-        this.btnEnrDelete.Left = 232; this.btnEnrDelete.Top = 10; this.btnEnrDelete.Width = 100;
+        // 
+        btnEnrDelete.Location = new Point(232, 10);
+        btnEnrDelete.Name = "btnEnrDelete";
+        btnEnrDelete.Size = new Size(100, 23);
+        btnEnrDelete.TabIndex = 2;
+        btnEnrDelete.Text = "Xóa";
+        // 
         // btnEnrSave
-        this.btnEnrSave.Text = "Lưu";
-        this.btnEnrSave.Left = 344; this.btnEnrSave.Top = 10; this.btnEnrSave.Width = 100;
-
+        // 
+        btnEnrSave.Location = new Point(344, 10);
+        btnEnrSave.Name = "btnEnrSave";
+        btnEnrSave.Size = new Size(100, 23);
+        btnEnrSave.TabIndex = 3;
+        btnEnrSave.Text = "Lưu";
+        // 
         // Form1
-        this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        this.ClientSize = new System.Drawing.Size(1000, 600);
-        this.Controls.Add(this.tabMain);
-        this.Controls.Add(this.menuStrip1);
-        this.MainMenuStrip = this.menuStrip1;
-        this.Text = "Quản lý Sinh viên";
-
-        this.ResumeLayout(false);
+        // 
+        AutoScaleDimensions = new SizeF(8F, 20F);
+        AutoScaleMode = AutoScaleMode.Font;
+        ClientSize = new Size(1000, 600);
+        Controls.Add(tabMain);
+        Controls.Add(menuStrip1);
+        MainMenuStrip = menuStrip1;
+        Name = "Form1";
+        Text = "Quản lý Sinh viên";
+        menuStrip1.ResumeLayout(false);
+        menuStrip1.PerformLayout();
+        tabMain.ResumeLayout(false);
+        tabStudents.ResumeLayout(false);
+        ((System.ComponentModel.ISupportInitialize)dgvStudents).EndInit();
+        panelStu.ResumeLayout(false);
+        tabCourses.ResumeLayout(false);
+        ((System.ComponentModel.ISupportInitialize)dgvCourses).EndInit();
+        panelCou.ResumeLayout(false);
+        tabSemesters.ResumeLayout(false);
+        ((System.ComponentModel.ISupportInitialize)dgvSemesters).EndInit();
+        panelSem.ResumeLayout(false);
+        tabEnrollments.ResumeLayout(false);
+        ((System.ComponentModel.ISupportInitialize)dgvEnrollments).EndInit();
+        panelEnr.ResumeLayout(false);
+        ResumeLayout(false);
+        PerformLayout();
     }
 
     #endregion
