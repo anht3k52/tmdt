@@ -28,14 +28,18 @@ public partial class Form1 : Form
         btnStuDelete.Click += (_, __) => DeleteSelectedStudent();
 
         btnCouAdd.Click += (_, __) => AddCourse();
-        btnCouDelete.Click += (_, __) => DeleteSelectedCourse();
         btnCouSave.Click += (_, __) => SaveCourses();
+        // wire edit for courses
+        if (btnCouEdit != null) btnCouEdit.Click += (_, __) => EditSelectedCourse();
+        btnCouDelete.Click += (_, __) => DeleteSelectedCourse();
 
         btnSemAdd.Click += (_, __) => AddSemester();
+        if (btnSemEdit != null) btnSemEdit.Click += (_, __) => EditSelectedSemester();
         btnSemDelete.Click += (_, __) => DeleteSelectedSemester();
         btnSemSave.Click += (_, __) => SaveSemesters();
 
         btnEnrAdd.Click += (_, __) => AddEnrollment();
+        if (btnEnrEdit != null) btnEnrEdit.Click += (_, __) => EditSelectedEnrollment();
         btnEnrDelete.Click += (_, __) => DeleteSelectedEnrollment();
         btnEnrSave.Click += (_, __) => SaveEnrollments();
 
@@ -129,13 +133,19 @@ public partial class Form1 : Form
 
     private void AddCourse()
     {
-        var src = dgvCourses.DataSource as BindingList<CourseRow>;
-        if (src == null)
+        using var f = new Courses.CourseEditForm();
+        if (f.ShowDialog(this) == DialogResult.OK) LoadCourses();
+    }
+
+    private void EditSelectedCourse()
+    {
+        if (dgvCourses.CurrentRow == null) return;
+        var idObj = dgvCourses.CurrentRow.Cells[nameof(Course.Id)]?.Value;
+        if (idObj is int id && id > 0)
         {
-            LoadCourses();
-            src = dgvCourses.DataSource as BindingList<CourseRow>;
+            using var f = new Courses.CourseEditForm(id);
+            if (f.ShowDialog(this) == DialogResult.OK) LoadCourses();
         }
-        src!.Add(new CourseRow { Id = 0, CourseCode = string.Empty, Name = string.Empty, Credits = 0 });
     }
 
     private void DeleteSelectedCourse()
@@ -157,34 +167,7 @@ public partial class Form1 : Form
 
     private void SaveCourses()
     {
-        using var db = DbFactory.CreateDbContext();
-        foreach (DataGridViewRow row in dgvCourses.Rows)
-        {
-            if (row.IsNewRow) continue;
-            var id = row.Cells[nameof(Course.Id)].Value?.ToString();
-            var code = row.Cells[nameof(Course.CourseCode)].Value?.ToString() ?? "";
-            var name = row.Cells[nameof(Course.Name)].Value?.ToString() ?? "";
-            var creditsStr = row.Cells[nameof(Course.Credits)].Value?.ToString();
-            int credits = 0; int.TryParse(creditsStr, out credits);
-
-            if (string.IsNullOrWhiteSpace(code) || string.IsNullOrWhiteSpace(name)) continue;
-
-            if (int.TryParse(id, out var iid) && iid > 0)
-            {
-                var entity = db.Courses.Find(iid);
-                if (entity != null)
-                {
-                    entity.CourseCode = code;
-                    entity.Name = name;
-                    entity.Credits = credits;
-                }
-            }
-            else
-            {
-                db.Courses.Add(new Course { CourseCode = code, Name = name, Credits = credits });
-            }
-        }
-        db.SaveChanges();
+        // No-op: add/edit handled by dialog forms
         LoadCourses();
     }
 
@@ -199,13 +182,19 @@ public partial class Form1 : Form
 
     private void AddSemester()
     {
-        var src = dgvSemesters.DataSource as BindingList<SemesterRow>;
-        if (src == null)
+        using var f = new Semesters.SemesterEditForm();
+        if (f.ShowDialog(this) == DialogResult.OK) LoadSemesters();
+    }
+
+    private void EditSelectedSemester()
+    {
+        if (dgvSemesters.CurrentRow == null) return;
+        var idObj = dgvSemesters.CurrentRow.Cells[nameof(Semester.Id)]?.Value;
+        if (idObj is int id && id > 0)
         {
-            LoadSemesters();
-            src = dgvSemesters.DataSource as BindingList<SemesterRow>;
+            using var f = new Semesters.SemesterEditForm(id);
+            if (f.ShowDialog(this) == DialogResult.OK) LoadSemesters();
         }
-        src!.Add(new SemesterRow { Id = 0, Code = string.Empty, Name = string.Empty });
     }
 
     private void DeleteSelectedSemester()
@@ -227,31 +216,7 @@ public partial class Form1 : Form
 
     private void SaveSemesters()
     {
-        using var db = DbFactory.CreateDbContext();
-        foreach (DataGridViewRow row in dgvSemesters.Rows)
-        {
-            if (row.IsNewRow) continue;
-            var id = row.Cells[nameof(Semester.Id)].Value?.ToString();
-            var code = row.Cells[nameof(Semester.Code)].Value?.ToString() ?? "";
-            var name = row.Cells[nameof(Semester.Name)].Value?.ToString() ?? "";
-
-            if (string.IsNullOrWhiteSpace(code) || string.IsNullOrWhiteSpace(name)) continue;
-
-            if (int.TryParse(id, out var iid) && iid > 0)
-            {
-                var entity = db.Semesters.Find(iid);
-                if (entity != null)
-                {
-                    entity.Code = code;
-                    entity.Name = name;
-                }
-            }
-            else
-            {
-                db.Semesters.Add(new Semester { Code = code, Name = name });
-            }
-        }
-        db.SaveChanges();
+        // No-op: add/edit handled by dialog forms
         LoadSemesters();
     }
 
@@ -266,13 +231,19 @@ public partial class Form1 : Form
 
     private void AddEnrollment()
     {
-        var src = dgvEnrollments.DataSource as BindingList<EnrollmentRow>;
-        if (src == null)
+        using var f = new Enrollments.EnrollmentEditForm();
+        if (f.ShowDialog(this) == DialogResult.OK) LoadEnrollments();
+    }
+
+    private void EditSelectedEnrollment()
+    {
+        if (dgvEnrollments.CurrentRow == null) return;
+        var idObj = dgvEnrollments.CurrentRow.Cells[nameof(Enrollment.Id)]?.Value;
+        if (idObj is int id && id > 0)
         {
-            LoadEnrollments();
-            src = dgvEnrollments.DataSource as BindingList<EnrollmentRow>;
+            using var f = new Enrollments.EnrollmentEditForm(id);
+            if (f.ShowDialog(this) == DialogResult.OK) LoadEnrollments();
         }
-        src!.Add(new EnrollmentRow { Id = 0, StudentId = 0, CourseId = 0, SemesterId = 0, Grade = null });
     }
 
     private void DeleteSelectedEnrollment()
@@ -294,42 +265,7 @@ public partial class Form1 : Form
 
     private void SaveEnrollments()
     {
-        using var db = DbFactory.CreateDbContext();
-        foreach (DataGridViewRow row in dgvEnrollments.Rows)
-        {
-            if (row.IsNewRow) continue;
-            var id = row.Cells[nameof(Enrollment.Id)].Value?.ToString();
-            int.TryParse(row.Cells[nameof(Enrollment.StudentId)].Value?.ToString(), out var studentId);
-            int.TryParse(row.Cells[nameof(Enrollment.CourseId)].Value?.ToString(), out var courseId);
-            int.TryParse(row.Cells[nameof(Enrollment.SemesterId)].Value?.ToString(), out var semesterId);
-            double? grade = null;
-            if (double.TryParse(row.Cells[nameof(Enrollment.Grade)].Value?.ToString(), out var g)) grade = g;
-
-            if (studentId <= 0 || courseId <= 0 || semesterId <= 0) continue;
-
-            if (int.TryParse(id, out var iid) && iid > 0)
-            {
-                var entity = db.Enrollments.Find(iid);
-                if (entity != null)
-                {
-                    entity.StudentId = studentId;
-                    entity.CourseId = courseId;
-                    entity.SemesterId = semesterId;
-                    entity.Grade = grade;
-                }
-            }
-            else
-            {
-                db.Enrollments.Add(new Enrollment
-                {
-                    StudentId = studentId,
-                    CourseId = courseId,
-                    SemesterId = semesterId,
-                    Grade = grade
-                });
-            }
-        }
-        db.SaveChanges();
+        // No-op: add/edit handled by dialog forms
         LoadEnrollments();
     }
 }

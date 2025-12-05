@@ -44,12 +44,15 @@ partial class Form1
     private System.Windows.Forms.Button btnStuSave;
     private System.Windows.Forms.Button btnStuEdit;
     private System.Windows.Forms.Button btnCouAdd;
+    private System.Windows.Forms.Button btnCouEdit;
     private System.Windows.Forms.Button btnCouDelete;
     private System.Windows.Forms.Button btnCouSave;
     private System.Windows.Forms.Button btnSemAdd;
+    private System.Windows.Forms.Button btnSemEdit;
     private System.Windows.Forms.Button btnSemDelete;
     private System.Windows.Forms.Button btnSemSave;
     private System.Windows.Forms.Button btnEnrAdd;
+    private System.Windows.Forms.Button btnEnrEdit;
     private System.Windows.Forms.Button btnEnrDelete;
     private System.Windows.Forms.Button btnEnrSave;
     private System.Windows.Forms.Panel panelStu;
@@ -81,12 +84,15 @@ partial class Form1
         this.btnStuSave = new System.Windows.Forms.Button();
         this.btnStuEdit = new System.Windows.Forms.Button();
         this.btnCouAdd = new System.Windows.Forms.Button();
+        this.btnCouEdit = new System.Windows.Forms.Button();
         this.btnCouDelete = new System.Windows.Forms.Button();
         this.btnCouSave = new System.Windows.Forms.Button();
         this.btnSemAdd = new System.Windows.Forms.Button();
+        this.btnSemEdit = new System.Windows.Forms.Button();
         this.btnSemDelete = new System.Windows.Forms.Button();
         this.btnSemSave = new System.Windows.Forms.Button();
         this.btnEnrAdd = new System.Windows.Forms.Button();
+        this.btnEnrEdit = new System.Windows.Forms.Button();
         this.btnEnrDelete = new System.Windows.Forms.Button();
         this.btnEnrSave = new System.Windows.Forms.Button();
 
@@ -166,18 +172,22 @@ partial class Form1
         this.panelCou.Dock = System.Windows.Forms.DockStyle.Bottom;
         this.panelCou.Height = 48;
         this.panelCou.Controls.Add(this.btnCouAdd);
+        this.panelCou.Controls.Add(this.btnCouEdit);
         this.panelCou.Controls.Add(this.btnCouDelete);
         this.panelCou.Controls.Add(this.btnCouSave);
 
         // btnCouAdd
         this.btnCouAdd.Text = "Thêm";
         this.btnCouAdd.Left = 8; this.btnCouAdd.Top = 10; this.btnCouAdd.Width = 100;
+        // btnCouEdit
+        this.btnCouEdit.Text = "Sửa";
+        this.btnCouEdit.Left = 120; this.btnCouEdit.Top = 10; this.btnCouEdit.Width = 100;
         // btnCouDelete
         this.btnCouDelete.Text = "Xóa";
-        this.btnCouDelete.Left = 120; this.btnCouDelete.Top = 10; this.btnCouDelete.Width = 100;
+        this.btnCouDelete.Left = 232; this.btnCouDelete.Top = 10; this.btnCouDelete.Width = 100;
         // btnCouSave
         this.btnCouSave.Text = "Lưu";
-        this.btnCouSave.Left = 232; this.btnCouSave.Top = 10; this.btnCouSave.Width = 100;
+        this.btnCouSave.Left = 344; this.btnCouSave.Top = 10; this.btnCouSave.Width = 100;
 
         // tabSemesters
         this.tabSemesters.Text = "Học kỳ";
@@ -194,18 +204,22 @@ partial class Form1
         this.panelSem.Dock = System.Windows.Forms.DockStyle.Bottom;
         this.panelSem.Height = 48;
         this.panelSem.Controls.Add(this.btnSemAdd);
+        this.panelSem.Controls.Add(this.btnSemEdit);
         this.panelSem.Controls.Add(this.btnSemDelete);
         this.panelSem.Controls.Add(this.btnSemSave);
 
         // btnSemAdd
         this.btnSemAdd.Text = "Thêm";
         this.btnSemAdd.Left = 8; this.btnSemAdd.Top = 10; this.btnSemAdd.Width = 100;
+        // btnSemEdit
+        this.btnSemEdit.Text = "Sửa";
+        this.btnSemEdit.Left = 120; this.btnSemEdit.Top = 10; this.btnSemEdit.Width = 100;
         // btnSemDelete
         this.btnSemDelete.Text = "Xóa";
-        this.btnSemDelete.Left = 120; this.btnSemDelete.Top = 10; this.btnSemDelete.Width = 100;
+        this.btnSemDelete.Left = 232; this.btnSemDelete.Top = 10; this.btnSemDelete.Width = 100;
         // btnSemSave
         this.btnSemSave.Text = "Lưu";
-        this.btnSemSave.Left = 232; this.btnSemSave.Top = 10; this.btnSemSave.Width = 100;
+        this.btnSemSave.Left = 344; this.btnSemSave.Top = 10; this.btnSemSave.Width = 100;
 
         // tabEnrollments
         this.tabEnrollments.Text = "Đăng ký";
@@ -222,18 +236,22 @@ partial class Form1
         this.panelEnr.Dock = System.Windows.Forms.DockStyle.Bottom;
         this.panelEnr.Height = 48;
         this.panelEnr.Controls.Add(this.btnEnrAdd);
+        this.panelEnr.Controls.Add(this.btnEnrEdit);
         this.panelEnr.Controls.Add(this.btnEnrDelete);
         this.panelEnr.Controls.Add(this.btnEnrSave);
 
         // btnEnrAdd
         this.btnEnrAdd.Text = "Thêm";
         this.btnEnrAdd.Left = 8; this.btnEnrAdd.Top = 10; this.btnEnrAdd.Width = 100;
+        // btnEnrEdit
+        this.btnEnrEdit.Text = "Sửa";
+        this.btnEnrEdit.Left = 120; this.btnEnrEdit.Top = 10; this.btnEnrEdit.Width = 100;
         // btnEnrDelete
         this.btnEnrDelete.Text = "Xóa";
-        this.btnEnrDelete.Left = 120; this.btnEnrDelete.Top = 10; this.btnEnrDelete.Width = 100;
+        this.btnEnrDelete.Left = 232; this.btnEnrDelete.Top = 10; this.btnEnrDelete.Width = 100;
         // btnEnrSave
         this.btnEnrSave.Text = "Lưu";
-        this.btnEnrSave.Left = 232; this.btnEnrSave.Top = 10; this.btnEnrSave.Width = 100;
+        this.btnEnrSave.Left = 344; this.btnEnrSave.Top = 10; this.btnEnrSave.Width = 100;
 
         // Form1
         this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
