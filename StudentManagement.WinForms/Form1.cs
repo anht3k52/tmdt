@@ -24,8 +24,8 @@ public partial class Form1 : Form
         };
 
         btnStuAdd.Click += (_, __) => AddStudent();
+        btnStuEdit.Click += (_, __) => EditSelectedStudent();
         btnStuDelete.Click += (_, __) => DeleteSelectedStudent();
-        btnStuSave.Click += (_, __) => SaveStudents();
 
         btnCouAdd.Click += (_, __) => AddCourse();
         btnCouDelete.Click += (_, __) => DeleteSelectedCourse();
@@ -80,13 +80,19 @@ public partial class Form1 : Form
 
     private void AddStudent()
     {
-        var src = dgvStudents.DataSource as BindingList<StudentRow>;
-        if (src == null)
+        using var f = new Students.StudentEditForm();
+        if (f.ShowDialog(this) == DialogResult.OK) LoadStudents();
+    }
+
+    private void EditSelectedStudent()
+    {
+        if (dgvStudents.CurrentRow == null) return;
+        var idObj = dgvStudents.CurrentRow.Cells[nameof(Student.Id)]?.Value;
+        if (idObj is int id && id > 0)
         {
-            LoadStudents();
-            src = dgvStudents.DataSource as BindingList<StudentRow>;
+            using var f = new Students.StudentEditForm(id);
+            if (f.ShowDialog(this) == DialogResult.OK) LoadStudents();
         }
-        src!.Add(new StudentRow { Id = 0, StudentCode = string.Empty, FullName = string.Empty, DateOfBirth = null, ClassName = string.Empty });
     }
 
     private void DeleteSelectedStudent()
@@ -108,42 +114,7 @@ public partial class Form1 : Form
 
     private void SaveStudents()
     {
-        using var db = DbFactory.CreateDbContext();
-        foreach (DataGridViewRow row in dgvStudents.Rows)
-        {
-            if (row.IsNewRow) continue;
-            var id = row.Cells[nameof(Student.Id)].Value?.ToString();
-            var code = row.Cells[nameof(Student.StudentCode)].Value?.ToString() ?? "";
-            var name = row.Cells[nameof(Student.FullName)].Value?.ToString() ?? "";
-            DateTime? dob = null;
-            if (DateTime.TryParse(row.Cells[nameof(Student.DateOfBirth)].Value?.ToString(), out var dt)) dob = dt;
-            var cls = row.Cells[nameof(Student.ClassName)].Value?.ToString();
-
-            if (string.IsNullOrWhiteSpace(code) || string.IsNullOrWhiteSpace(name)) continue;
-
-            if (int.TryParse(id, out var iid) && iid > 0)
-            {
-                var entity = db.Students.Find(iid);
-                if (entity != null)
-                {
-                    entity.StudentCode = code;
-                    entity.FullName = name;
-                    entity.DateOfBirth = dob;
-                    entity.ClassName = cls;
-                }
-            }
-            else
-            {
-                db.Students.Add(new Student
-                {
-                    StudentCode = code,
-                    FullName = name,
-                    DateOfBirth = dob,
-                    ClassName = cls
-                });
-            }
-        }
-        db.SaveChanges();
+        // No-op for Students since add/edit handled by dialog
         LoadStudents();
     }
 

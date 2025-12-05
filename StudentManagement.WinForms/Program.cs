@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using StudentManagement.WinForms.Data;
+using System.Globalization;
 
 namespace StudentManagement.WinForms;
 
@@ -13,6 +14,11 @@ static class Program
     {
         // Khởi tạo cấu hình ứng dụng
         ApplicationConfiguration.Initialize();
+
+        // Thiết lập văn hóa tiếng Việt để nhập ngày dd/MM/yyyy
+        var culture = new CultureInfo("vi-VN");
+        CultureInfo.DefaultThreadCurrentCulture = culture;
+        CultureInfo.DefaultThreadCurrentUICulture = culture;
 
         // Đảm bảo CSDL được tạo (Code-First)
         using (var db = DbFactory.CreateDbContext())

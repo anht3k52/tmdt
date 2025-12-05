@@ -42,6 +42,7 @@ partial class Form1
     private System.Windows.Forms.Button btnStuAdd;
     private System.Windows.Forms.Button btnStuDelete;
     private System.Windows.Forms.Button btnStuSave;
+    private System.Windows.Forms.Button btnStuEdit;
     private System.Windows.Forms.Button btnCouAdd;
     private System.Windows.Forms.Button btnCouDelete;
     private System.Windows.Forms.Button btnCouSave;
@@ -78,6 +79,7 @@ partial class Form1
         this.btnStuAdd = new System.Windows.Forms.Button();
         this.btnStuDelete = new System.Windows.Forms.Button();
         this.btnStuSave = new System.Windows.Forms.Button();
+        this.btnStuEdit = new System.Windows.Forms.Button();
         this.btnCouAdd = new System.Windows.Forms.Button();
         this.btnCouDelete = new System.Windows.Forms.Button();
         this.btnCouSave = new System.Windows.Forms.Button();
@@ -132,18 +134,22 @@ partial class Form1
         this.panelStu.Dock = System.Windows.Forms.DockStyle.Bottom;
         this.panelStu.Height = 48;
         this.panelStu.Controls.Add(this.btnStuAdd);
+        this.panelStu.Controls.Add(this.btnStuEdit);
         this.panelStu.Controls.Add(this.btnStuDelete);
         this.panelStu.Controls.Add(this.btnStuSave);
 
         // btnStuAdd
         this.btnStuAdd.Text = "Thêm";
         this.btnStuAdd.Left = 8; this.btnStuAdd.Top = 10; this.btnStuAdd.Width = 100;
+        // btnStuEdit
+        this.btnStuEdit.Text = "Sửa";
+        this.btnStuEdit.Left = 120; this.btnStuEdit.Top = 10; this.btnStuEdit.Width = 100;
         // btnStuDelete
         this.btnStuDelete.Text = "Xóa";
-        this.btnStuDelete.Left = 120; this.btnStuDelete.Top = 10; this.btnStuDelete.Width = 100;
+        this.btnStuDelete.Left = 232; this.btnStuDelete.Top = 10; this.btnStuDelete.Width = 100;
         // btnStuSave
         this.btnStuSave.Text = "Lưu";
-        this.btnStuSave.Left = 232; this.btnStuSave.Top = 10; this.btnStuSave.Width = 100;
+        this.btnStuSave.Left = 344; this.btnStuSave.Top = 10; this.btnStuSave.Width = 100;
 
         // tabCourses
         this.tabCourses.Text = "Môn học";
