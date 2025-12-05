@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ER Diagram – CSDL Quản lý môn học sinh viên</title>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, theme: 'default' });
+  </script>
+  <style>body{font-family:Segoe UI,Roboto,Arial,Helvetica,sans-serif;margin:24px;line-height:1.5}</style>
+</head>
+<body>
+  <h1>ER Diagram – Hiện trạng dự án</h1>
+  <p>Dựa trên mã nguồn hiện có (EF Core): bảng Students, Courses, Semesters, Enrollments và các quan hệ.</p>
+  <pre class="mermaid">
+erDiagram
+  STUDENTS {
+    INT Id PK
+    STRING StudentCode
+    STRING FullName
+    DATE DateOfBirth
+    STRING ClassName
+  }
+
+  COURSES {
+    INT Id PK
+    STRING CourseCode
+    STRING Name
+    INT Credits
+  }
+
+  SEMESTERS {
+    INT Id PK
+    STRING Code
+    STRING Name
+  }
+
+  ENROLLMENTS {
+    INT Id PK
+    INT StudentId FK
+    INT CourseId FK
+    INT SemesterId FK
+    DOUBLE Grade
+  }
+
+  STUDENTS ||--o{ ENROLLMENTS : registers
+  COURSES  ||--o{ ENROLLMENTS : has
+  SEMESTERS||--o{ ENROLLMENTS : in
+  </pre>
+
+  <h2>Ghi chú</h2>
+  <ul>
+    <li>Khóa duy nhất: Student.StudentCode, Course.CourseCode, Semester.Code (theo cấu hình ModelBuilder).</li>
+    <li>Ràng buộc duy nhất đăng ký: (StudentId, CourseId, SemesterId).</li>
+  </ul>
+</body>
+</html>
