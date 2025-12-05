@@ -62,24 +62,13 @@ public partial class Form1 : Form
 
         mnuBC_KeHoachHocTap.Click += (_, __) =>
         {
-            var sem = Interaction.InputBox("Nhập mã Học kỳ (ví dụ: 2025-1)", "Báo cáo kế hoạch học tập", "");
-            if (!string.IsNullOrWhiteSpace(sem))
-            {
-                var file = ReportService.GenerateStudyPlanBySemester(sem.Trim());
-                MessageBox.Show($"Đã tạo: {file}");
-                try { System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo { FileName = file, UseShellExecute = true }); } catch { }
-            }
+            using var f = new Reports.StudyPlanReportForm();
+            f.ShowDialog(this);
         };
         mnuBC_DSSVTheoMonHK.Click += (_, __) =>
         {
-            var course = Interaction.InputBox("Nhập mã Môn học (vd: CT101)", "Báo cáo danh sách SV", "");
-            var sem = Interaction.InputBox("Nhập mã Học kỳ (vd: 2025-1)", "Báo cáo danh sách SV", "");
-            if (!string.IsNullOrWhiteSpace(course) && !string.IsNullOrWhiteSpace(sem))
-            {
-                var file = ReportService.GenerateStudentsByCourseSemester(course.Trim(), sem.Trim());
-                MessageBox.Show($"Đã tạo: {file}");
-                try { System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo { FileName = file, UseShellExecute = true }); } catch { }
-            }
+            using var f = new Reports.StudentsByCourseSemesterForm();
+            f.ShowDialog(this);
         };
         mnuBC_BaoCaoDangKy.Click += (_, __) =>
         {
