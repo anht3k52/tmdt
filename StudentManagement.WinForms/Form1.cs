@@ -21,8 +21,19 @@ public partial class Form1 : Form
         dgvSemesters.AutoGenerateColumns = true;
         dgvEnrollments.AutoGenerateColumns = true;
 
-        this.Load += (_, __) =>
+        this.Shown += (_, __) =>
         {
+            if (!Program.Authenticated)
+            {
+                using var login = new LoginForm() { TopMost = true };
+                if (login.ShowDialog(this) != DialogResult.OK)
+                {
+                    Close();
+                    return;
+                }
+                Program.Authenticated = true;
+            }
+
             try { LoadStudents(); } catch (Exception ex) { MessageBox.Show($"Lỗi tải Sinh viên: {ex.Message}"); }
             try { LoadCourses(); } catch (Exception ex) { MessageBox.Show($"Lỗi tải Môn học: {ex.Message}"); }
             try { LoadSemesters(); } catch (Exception ex) { MessageBox.Show($"Lỗi tải Học kỳ: {ex.Message}"); }

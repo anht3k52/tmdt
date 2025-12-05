@@ -7,6 +7,7 @@ namespace StudentManagement.WinForms;
 
 static class Program
 {
+    public static bool Authenticated { get; set; } = false;
     /// <summary>
     ///  The main entry point for the application.
     /// </summary>
@@ -37,9 +38,11 @@ static class Program
 
         using (var login = new LoginForm())
         {
+            login.TopMost = true;
             var result = login.ShowDialog();
             if (result != DialogResult.OK)
                 return;
+            Authenticated = true;
         }
 
         Application.Run(new Form1());

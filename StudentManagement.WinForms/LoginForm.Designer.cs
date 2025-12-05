@@ -18,53 +18,81 @@ partial class LoginForm
 
     private void InitializeComponent()
     {
-        this.lblUser = new System.Windows.Forms.Label();
-        this.lblPass = new System.Windows.Forms.Label();
-        this.txtUser = new System.Windows.Forms.TextBox();
-        this.txtPass = new System.Windows.Forms.TextBox();
-        this.btnLogin = new System.Windows.Forms.Button();
-        this.btnCancel = new System.Windows.Forms.Button();
-        this.SuspendLayout();
-
+        lblUser = new Label();
+        lblPass = new Label();
+        txtUser = new TextBox();
+        txtPass = new TextBox();
+        btnLogin = new Button();
+        btnCancel = new Button();
+        SuspendLayout();
+        // 
         // lblUser
-        this.lblUser.AutoSize = true;
-        this.lblUser.Text = "Tài khoản";
-        this.lblUser.Left = 16; this.lblUser.Top = 18;
-
+        // 
+        lblUser.AutoSize = true;
+        lblUser.Location = new Point(16, 18);
+        lblUser.Name = "lblUser";
+        lblUser.Size = new Size(71, 20);
+        lblUser.TabIndex = 0;
+        lblUser.Text = "Tài khoản";
+        // 
         // lblPass
-        this.lblPass.AutoSize = true;
-        this.lblPass.Text = "Mật khẩu";
-        this.lblPass.Left = 16; this.lblPass.Top = 58;
-
+        // 
+        lblPass.AutoSize = true;
+        lblPass.Location = new Point(16, 58);
+        lblPass.Name = "lblPass";
+        lblPass.Size = new Size(70, 20);
+        lblPass.TabIndex = 1;
+        lblPass.Text = "Mật khẩu";
+        // 
         // txtUser
-        this.txtUser.Left = 100; this.txtUser.Top = 15; this.txtUser.Width = 220;
-
+        // 
+        txtUser.Location = new Point(100, 15);
+        txtUser.Name = "txtUser";
+        txtUser.Size = new Size(220, 27);
+        txtUser.TabIndex = 2;
+        // 
         // txtPass
-        this.txtPass.Left = 100; this.txtPass.Top = 55; this.txtPass.Width = 220; this.txtPass.PasswordChar = '•';
-
+        // 
+        txtPass.Location = new Point(100, 55);
+        txtPass.Name = "txtPass";
+        txtPass.PasswordChar = '•';
+        txtPass.Size = new Size(220, 27);
+        txtPass.TabIndex = 3;
+        // 
         // btnLogin
-        this.btnLogin.Text = "Đăng nhập";
-        this.btnLogin.Left = 100; this.btnLogin.Top = 100; this.btnLogin.Width = 100;
-
+        // 
+        btnLogin.Location = new Point(100, 100);
+        btnLogin.Name = "btnLogin";
+        btnLogin.Size = new Size(100, 38);
+        btnLogin.TabIndex = 4;
+        btnLogin.Text = "Đăng nhập";
+        // 
         // btnCancel
-        this.btnCancel.Text = "Hủy";
-        this.btnCancel.Left = 220; this.btnCancel.Top = 100; this.btnCancel.Width = 100;
-
-        // Form
-        this.AcceptButton = this.btnLogin;
-        this.CancelButton = this.btnCancel;
-        this.ClientSize = new System.Drawing.Size(350, 150);
-        this.Controls.Add(this.lblUser);
-        this.Controls.Add(this.lblPass);
-        this.Controls.Add(this.txtUser);
-        this.Controls.Add(this.txtPass);
-        this.Controls.Add(this.btnLogin);
-        this.Controls.Add(this.btnCancel);
-        this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-        this.Text = "Đăng nhập";
-        this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-        this.MaximizeBox = false; this.MinimizeBox = false;
-
-        this.ResumeLayout(false);
+        // 
+        btnCancel.Location = new Point(220, 100);
+        btnCancel.Name = "btnCancel";
+        btnCancel.Size = new Size(100, 38);
+        btnCancel.TabIndex = 5;
+        btnCancel.Text = "Hủy";
+        // 
+        // LoginForm
+        // 
+        AcceptButton = btnLogin;
+        CancelButton = btnCancel;
+        ClientSize = new Size(350, 150);
+        Controls.Add(lblUser);
+        Controls.Add(lblPass);
+        Controls.Add(txtUser);
+        Controls.Add(txtPass);
+        Controls.Add(btnLogin);
+        Controls.Add(btnCancel);
+        FormBorderStyle = FormBorderStyle.FixedDialog;
+        MaximizeBox = false;
+        MinimizeBox = false;
+        Name = "LoginForm";
+        StartPosition = FormStartPosition.CenterScreen;
+        Text = "Đăng nhập";
+        ResumeLayout(false);
+        PerformLayout();
     }
 }
