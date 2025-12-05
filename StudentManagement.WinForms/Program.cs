@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using StudentManagement.WinForms.Data;
+using StudentManagement.Data;
 using System.Globalization;
 
 namespace StudentManagement.WinForms;
@@ -20,10 +21,11 @@ static class Program
         CultureInfo.DefaultThreadCurrentCulture = culture;
         CultureInfo.DefaultThreadCurrentUICulture = culture;
 
-        // Đảm bảo CSDL được tạo (Code-First)
+        // Đảm bảo CSDL được tạo (Code-First) và seed dữ liệu mẫu khi trống
         using (var db = DbFactory.CreateDbContext())
         {
             db.Database.EnsureCreated();
+            DbSeeder.Seed(db);
         }
 
         using (var login = new LoginForm())
