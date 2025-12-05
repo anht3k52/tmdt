@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Biểu đồ Use Case – Quản lý môn học sinh viên (Trường ĐH Điện Lực)</title>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, theme: 'default' });
+  </script>
+  <style>body{font-family:Segoe UI,Roboto,Arial,Helvetica,sans-serif;margin:24px;line-height:1.5} h1,h2{margin:0 0 12px} .box{margin-top:24px}</style>
+  </head>
+<body>
+  <h1>Biểu đồ Use Case – Hệ thống quản lý môn học sinh viên</h1>
+  <p>Phạm vi: quản lý Sinh viên, Môn học, Học kỳ (năm/kỳ), Đăng ký học phần, Nhập điểm, Báo cáo.</p>
+
+  <div class="box">
+  <pre class="mermaid">
+flowchart LR
+    %% Actors
+    A["Sinh viên"]:::actor
+    GV["Giảng viên"]:::actor
+    CBGD["Cán bộ đào tạo"]:::actor
+    ADMIN["Quản trị hệ thống"]:::actor
+
+    %% Use cases (nodes)
+    UC_Login([Đăng nhập])
+    UC_ViewCourses([Xem danh mục môn])
+    UC_Enroll([Đăng ký học phần])
+    UC_ViewEnroll([Xem đăng ký])
+    UC_EnterGrade([Nhập/ cập nhật điểm])
+    UC_ManageStudents([Quản lý sinh viên])
+    UC_ManageCourses([Quản lý môn học])
+    UC_ManageSemesters([Quản lý học kỳ])
+    UC_ManageEnroll([Quản lý đăng ký])
+    UC_Reports([Báo cáo/ thống kê])
+
+    %% Relations
+    A -- "thực hiện" --> UC_Login
+    A --> UC_ViewCourses
+    A --> UC_Enroll
+    A --> UC_ViewEnroll
+
+    GV --> UC_Login
+    GV --> UC_EnterGrade
+    GV --> UC_Reports
+
+    CBGD --> UC_Login
+    CBGD --> UC_ManageStudents
+    CBGD --> UC_ManageCourses
+    CBGD --> UC_ManageSemesters
+    CBGD --> UC_ManageEnroll
+    CBGD --> UC_Reports
+
+    ADMIN --> UC_Login
+    ADMIN --> UC_ManageStudents
+    ADMIN --> UC_ManageCourses
+    ADMIN --> UC_ManageSemesters
+    ADMIN --> UC_ManageEnroll
+    ADMIN --> UC_Reports
+
+    classDef actor fill:#fff,stroke:#333,stroke-width:1px;
+  </pre>
+  </div>
+
+  <h2>Ghi chú</h2>
+  <ul>
+    <li>Sinh viên: đăng nhập, xem môn, tự đăng ký học phần, xem danh sách đăng ký.</li>
+    <li>Giảng viên: đăng nhập, nhập/ cập nhật điểm, xem báo cáo lớp môn.</li>
+    <li>Cán bộ đào tạo: quản trị danh mục (sinh viên/ môn/ học kỳ), duyệt/ quản lý đăng ký, xuất báo cáo.</li>
+    <li>Quản trị hệ thống: toàn quyền cấu hình và quản trị dữ liệu.</li>
+  </ul>
+</body>
+</html>

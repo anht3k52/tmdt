@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Báo cáo đồ án – Hệ thống quản lý môn học sinh viên – Trường Đại học Điện Lực</title>
+  <style>
+    body{font-family:Segoe UI,Roboto,Arial,Helvetica,sans-serif;margin:24px;line-height:1.6}
+    h1,h2,h3{margin:16px 0 8px}
+    .center{text-align:center}
+    table{border-collapse:collapse;width:100%;margin:12px 0}
+    th,td{border:1px solid #ccc;padding:8px}
+  </style>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, theme: 'default' });
+  </script>
+</head>
+<body>
+  <div class="center">
+    <h3>TRƯỜNG ĐẠI HỌC ĐIỆN LỰC</h3>
+    <h4>KHOA CÔNG NGHỆ THÔNG TIN</h4>
+    <h1>ĐỒ ÁN – LẬP TRÌNH .NET</h1>
+    <h2>ĐỀ TÀI: XÂY DỰNG HỆ THỐNG QUẢN LÝ MÔN HỌC SINH VIÊN</h2>
+    <p>Sinh viên thực hiện: NGUYỄN THỊ THU<br />
+       Giảng viên hướng dẫn: PHƯƠNG VĂN CẢNH<br />
+       Lớp: D12 - CNPM2 – Chuyên ngành: CÔNG NGHỆ PHẦN MỀM<br />
+       Niên khóa: 2017 – 2022</p>
+    <p>Hà Nội, tháng 06 năm 2021</p>
+  </div>
+
+  <h2>PHIẾU CHẤM ĐIỂM</h2>
+  <table>
+    <thead><tr><th>STT</th><th>Họ và tên sinh viên</th><th>Nội dung thực hiện</th><th>Điểm</th><th>Chữ ký</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Nguyễn Thị Thu</td><td>Giảng viên chấm thi</td><td></td><td></td></tr>
+    </tbody>
+  </table>
+
+  <h2>MỤC LỤC</h2>
+  <ol>
+    <li>Lời cảm ơn</li>
+    <li>Lời mở đầu</li>
+    <li>Chương 1: Khảo sát dự án</li>
+    <li>Chương 2: Phân tích và thiết kế hệ thống</li>
+    <li>Chương 3: Thiết kế cơ sở dữ liệu</li>
+    <li>Chương 4: Thiết kế giao diện</li>
+    <li>Chương 5: Kiểm thử và demo</li>
+    <li>Kết luận</li>
+  </ol>
+
+  <h2>LỜI CẢM ƠN</h2>
+  <p>…</p>
+
+  <h2>LỜI MỞ ĐẦU</h2>
+  <p>Đề tài xây dựng hệ thống quản lý môn học sinh viên nhằm số hóa các nghiệp vụ: quản lý sinh viên, môn học, học kỳ (năm/kỳ), đăng ký học phần, nhập điểm và báo cáo.</p>
+
+  <h2>CHƯƠNG 1: KHẢO SÁT DỰ ÁN</h2>
+  <h3>1.1. Khảo sát hệ thống</h3>
+  <p>Hiện trạng: đăng ký môn học phân tán, thiếu báo cáo tổng hợp. Yêu cầu: quản lý danh mục, đăng ký tập trung, theo dõi điểm, xuất báo cáo.</p>
+  <h3>1.2. Yêu cầu chức năng</h3>
+  <ul>
+    <li>Quản lý Sinh viên/Môn học/Học kỳ.</li>
+    <li>Đăng nhập, phân quyền (Sinh viên, Giảng viên, Cán bộ đào tạo, Quản trị).</li>
+    <li>Sinh viên đăng ký học phần; Giảng viên nhập điểm; Báo cáo theo học kỳ/môn.</li>
+  </ul>
+  <h3>1.3. Yêu cầu phi chức năng</h3>
+  <ul>
+    <li>Dễ dùng, hiệu năng ổn định, sao lưu phục hồi dữ liệu.</li>
+  </ul>
+
+  <h2>CHƯƠNG 2: PHÂN TÍCH VÀ THIẾT KẾ HỆ THỐNG</h2>
+  <h3>2.1. Biểu đồ Use Case tổng quan</h3>
+  <pre class="mermaid">
+flowchart LR
+  SV["Sinh viên"]:::actor
+  GV["Giảng viên"]:::actor
+  CBGD["Cán bộ đào tạo"]:::actor
+  QT["Quản trị"]:::actor
+
+  UC1([Đăng nhập])
+  UC2([Quản lý sinh viên])
+  UC3([Quản lý môn học])
+  UC4([Quản lý học kỳ])
+  UC5([Đăng ký học phần])
+  UC6([Quản lý đăng ký])
+  UC7([Nhập điểm])
+  UC8([Báo cáo])
+
+  SV-->UC1; SV-->UC5; SV-->UC8
+  GV-->UC1; GV-->UC7; GV-->UC8
+  CBGD-->UC1; CBGD-->UC2; CBGD-->UC3; CBGD-->UC4; CBGD-->UC6; CBGD-->UC8
+  QT-->UC1; QT-->UC2; QT-->UC3; QT-->UC4; QT-->UC6; QT-->UC8
+
+  classDef actor fill:#fff,stroke:#333
+  </pre>
+
+  <h3>2.2. Đặc tả Use Case (tóm tắt)</h3>
+  <ul>
+    <li>Quản lý sinh viên: thêm/sửa/xóa, tìm kiếm, xem chi tiết.</li>
+    <li>Quản lý môn học: thêm/sửa/xóa, tín chỉ.</li>
+    <li>Quản lý học kỳ: mã học kỳ (ví dụ 2025-1), tên hiển thị.</li>
+    <li>Đăng ký học phần: mỗi SV đăng ký nhiều môn trong một học kỳ.</li>
+    <li>Nhập điểm: giảng viên cập nhật điểm cho đăng ký.</li>
+    <li>Báo cáo: kế hoạch học tập, danh sách SV theo môn/học kỳ, báo cáo đăng ký.</li>
+  </ul>
+
+  <h2>CHƯƠNG 3: THIẾT KẾ CƠ SỞ DỮ LIỆU</h2>
+  <h3>3.1. Mối quan hệ giữa các bảng</h3>
+  <pre class="mermaid">
+erDiagram
+  STUDENTS { INT Id PK; STRING StudentCode; STRING FullName; DATE DateOfBirth; STRING ClassName }
+  COURSES  { INT Id PK; STRING CourseCode; STRING Name; INT Credits }
+  SEMESTERS{ INT Id PK; STRING Code; STRING Name }
+  ENROLLMENTS{ INT Id PK; INT StudentId FK; INT CourseId FK; INT SemesterId FK; DOUBLE Grade }
+
+  STUDENTS ||--o{ ENROLLMENTS : registers
+  COURSES  ||--o{ ENROLLMENTS : has
+  SEMESTERS||--o{ ENROLLMENTS : in
+  </pre>
+
+  <h3>3.2. Thuộc tính chi tiết</h3>
+  <table>
+    <thead><tr><th>Bảng</th><th>Thuộc tính</th><th>Kiểu</th><th>Ghi chú</th></tr></thead>
+    <tbody>
+      <tr><td>Students</td><td>Id, StudentCode, FullName, DateOfBirth, ClassName</td><td>PK + text/date</td><td>StudentCode duy nhất</td></tr>
+      <tr><td>Courses</td><td>Id, CourseCode, Name, Credits</td><td>PK + text + int</td><td>CourseCode duy nhất</td></tr>
+      <tr><td>Semesters</td><td>Id, Code, Name</td><td>PK + text</td><td>Code duy nhất</td></tr>
+      <tr><td>Enrollments</td><td>Id, StudentId, CourseId, SemesterId, Grade</td><td>PK + FK + double?</td><td>Unique(StudentId,CourseId,SemesterId)</td></tr>
+    </tbody>
+  </table>
+
+  <h2>CHƯƠNG 4: THIẾT KẾ GIAO DIỆN</h2>
+  <ul>
+    <li>Giao diện đăng nhập.</li>
+    <li>Tab Sinh viên, Môn học, Học kỳ, Đăng ký (DataGridView + dialog thêm/sửa).</li>
+    <li>Menu Báo cáo: Kế hoạch học tập, Danh sách SV theo môn (học kỳ), Báo cáo đăng ký.</li>
+  </ul>
+
+  <h2>CHƯƠNG 5: KIỂM THỬ VÀ DEMO</h2>
+  <p>Kiểm thử chức năng CRUD, ràng buộc duy nhất đăng ký, báo cáo hiển thị đúng theo bộ lọc.</p>
+
+  <h2>KẾT LUẬN</h2>
+  <p>Hệ thống đáp ứng nghiệp vụ quản lý môn học sinh viên; có thể mở rộng: ràng buộc chương trình đào tạo, tự động đăng ký môn bắt buộc.</p>
+
+  <h2>TÀI LIỆU THAM KHẢO</h2>
+  <ul>
+    <li>Microsoft Docs: https://docs.microsoft.com/vi-vn/</li>
+    <li>StackOverflow: https://stackoverflow.com</li>
+  </ul>
+</body>
+</html>
