@@ -18,7 +18,6 @@
   <pre class="mermaid">
 flowchart LR
     %% Actors
-    A["Sinh viên"]:::actor
     GV["Giảng viên"]:::actor
     CBGD["Cán bộ đào tạo"]:::actor
     ADMIN["Quản trị hệ thống"]:::actor
@@ -36,11 +35,6 @@ flowchart LR
     UC_Reports([Báo cáo/ thống kê])
 
     %% Relations
-    A -- "thực hiện" --> UC_Login
-    A --> UC_ViewCourses
-    A --> UC_Enroll
-    A --> UC_ViewEnroll
-
     GV --> UC_Login
     GV --> UC_EnterGrade
     GV --> UC_Reports
@@ -65,7 +59,6 @@ flowchart LR
 
   <h2>Ghi chú</h2>
   <ul>
-    <li>Sinh viên: đăng nhập, xem môn, tự đăng ký học phần, xem danh sách đăng ký.</li>
     <li>Giảng viên: đăng nhập, nhập/ cập nhật điểm, xem báo cáo lớp môn.</li>
     <li>Cán bộ đào tạo: quản trị danh mục (sinh viên/ môn/ học kỳ), duyệt/ quản lý đăng ký, xuất báo cáo.</li>
     <li>Quản trị hệ thống: toàn quyền cấu hình và quản trị dữ liệu.</li>
