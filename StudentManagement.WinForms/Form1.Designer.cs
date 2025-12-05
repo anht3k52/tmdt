@@ -67,6 +67,7 @@ partial class Form1
         mnuBaoCao = new ToolStripMenuItem();
         mnuBC_KeHoachHocTap = new ToolStripMenuItem();
         mnuBC_DSSVTheoMonHK = new ToolStripMenuItem();
+        mnuBC_BaoCaoDangKy = new ToolStripMenuItem();
         tabMain = new TabControl();
         tabStudents = new TabPage();
         dgvStudents = new DataGridView();
