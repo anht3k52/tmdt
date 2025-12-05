@@ -4,6 +4,8 @@ using StudentManagement.Data.Models;
 using StudentManagement.WinForms.Data;
 using StudentManagement.WinForms.Reports;
 using Microsoft.VisualBasic; // For Interaction.InputBox
+using StudentManagement.WinForms.Models;
+using System.ComponentModel;
 
 namespace StudentManagement.WinForms;
 
@@ -63,29 +65,28 @@ public partial class Form1 : Form
     private void LoadStudents()
     {
         using var db = DbFactory.CreateDbContext();
-        var data = db.Students.AsNoTracking().Select(s => new
-        {
-            s.Id,
-            s.StudentCode,
-            s.FullName,
-            s.DateOfBirth,
-            s.ClassName
-        }).ToList();
-        dgvStudents.DataSource = data;
+        var data = db.Students.AsNoTracking()
+            .Select(s => new StudentRow
+            {
+                Id = s.Id,
+                StudentCode = s.StudentCode,
+                FullName = s.FullName,
+                DateOfBirth = s.DateOfBirth,
+                ClassName = s.ClassName
+            })
+            .ToList();
+        dgvStudents.DataSource = new BindingList<StudentRow>(data);
     }
 
     private void AddStudent()
     {
-        var src = dgvStudents.DataSource as List<dynamic>;
+        var src = dgvStudents.DataSource as BindingList<StudentRow>;
         if (src == null)
         {
             LoadStudents();
-            src = dgvStudents.DataSource as List<dynamic>;
+            src = dgvStudents.DataSource as BindingList<StudentRow>;
         }
-        // Thêm dòng trống để nhập
-        var list = src!.ToList();
-        list.Add(new { Id = 0, StudentCode = "", FullName = "", DateOfBirth = (DateTime?)null, ClassName = "" });
-        dgvStudents.DataSource = list;
+        src!.Add(new StudentRow { Id = 0, StudentCode = string.Empty, FullName = string.Empty, DateOfBirth = null, ClassName = string.Empty });
     }
 
     private void DeleteSelectedStudent()
@@ -149,21 +150,21 @@ public partial class Form1 : Form
     private void LoadCourses()
     {
         using var db = DbFactory.CreateDbContext();
-        var data = db.Courses.AsNoTracking().Select(s => new { s.Id, s.CourseCode, s.Name, s.Credits }).ToList();
-        dgvCourses.DataSource = data;
+        var data = db.Courses.AsNoTracking()
+            .Select(s => new CourseRow { Id = s.Id, CourseCode = s.CourseCode, Name = s.Name, Credits = s.Credits })
+            .ToList();
+        dgvCourses.DataSource = new BindingList<CourseRow>(data);
     }
 
     private void AddCourse()
     {
-        var src = dgvCourses.DataSource as List<dynamic>;
+        var src = dgvCourses.DataSource as BindingList<CourseRow>;
         if (src == null)
         {
             LoadCourses();
-            src = dgvCourses.DataSource as List<dynamic>;
+            src = dgvCourses.DataSource as BindingList<CourseRow>;
         }
-        var list = src!.ToList();
-        list.Add(new { Id = 0, CourseCode = "", Name = "", Credits = 0 });
-        dgvCourses.DataSource = list;
+        src!.Add(new CourseRow { Id = 0, CourseCode = string.Empty, Name = string.Empty, Credits = 0 });
     }
 
     private void DeleteSelectedCourse()
@@ -219,21 +220,21 @@ public partial class Form1 : Form
     private void LoadSemesters()
     {
         using var db = DbFactory.CreateDbContext();
-        var data = db.Semesters.AsNoTracking().Select(s => new { s.Id, s.Code, s.Name }).ToList();
-        dgvSemesters.DataSource = data;
+        var data = db.Semesters.AsNoTracking()
+            .Select(s => new SemesterRow { Id = s.Id, Code = s.Code, Name = s.Name })
+            .ToList();
+        dgvSemesters.DataSource = new BindingList<SemesterRow>(data);
     }
 
     private void AddSemester()
     {
-        var src = dgvSemesters.DataSource as List<dynamic>;
+        var src = dgvSemesters.DataSource as BindingList<SemesterRow>;
         if (src == null)
         {
             LoadSemesters();
-            src = dgvSemesters.DataSource as List<dynamic>;
+            src = dgvSemesters.DataSource as BindingList<SemesterRow>;
         }
-        var list = src!.ToList();
-        list.Add(new { Id = 0, Code = "", Name = "" });
-        dgvSemesters.DataSource = list;
+        src!.Add(new SemesterRow { Id = 0, Code = string.Empty, Name = string.Empty });
     }
 
     private void DeleteSelectedSemester()
@@ -286,21 +287,21 @@ public partial class Form1 : Form
     private void LoadEnrollments()
     {
         using var db = DbFactory.CreateDbContext();
-        var data = db.Enrollments.AsNoTracking().Select(s => new { s.Id, s.StudentId, s.CourseId, s.SemesterId, s.Grade }).ToList();
-        dgvEnrollments.DataSource = data;
+        var data = db.Enrollments.AsNoTracking()
+            .Select(s => new EnrollmentRow { Id = s.Id, StudentId = s.StudentId, CourseId = s.CourseId, SemesterId = s.SemesterId, Grade = s.Grade })
+            .ToList();
+        dgvEnrollments.DataSource = new BindingList<EnrollmentRow>(data);
     }
 
     private void AddEnrollment()
     {
-        var src = dgvEnrollments.DataSource as List<dynamic>;
+        var src = dgvEnrollments.DataSource as BindingList<EnrollmentRow>;
         if (src == null)
         {
             LoadEnrollments();
-            src = dgvEnrollments.DataSource as List<dynamic>;
+            src = dgvEnrollments.DataSource as BindingList<EnrollmentRow>;
         }
-        var list = src!.ToList();
-        list.Add(new { Id = 0, StudentId = 0, CourseId = 0, SemesterId = 0, Grade = (double?)null });
-        dgvEnrollments.DataSource = list;
+        src!.Add(new EnrollmentRow { Id = 0, StudentId = 0, CourseId = 0, SemesterId = 0, Grade = null });
     }
 
     private void DeleteSelectedEnrollment()

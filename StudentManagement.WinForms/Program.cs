@@ -20,6 +20,13 @@ static class Program
             db.Database.EnsureCreated();
         }
 
+        using (var login = new LoginForm())
+        {
+            var result = login.ShowDialog();
+            if (result != DialogResult.OK)
+                return;
+        }
+
         Application.Run(new Form1());
     }
 }
